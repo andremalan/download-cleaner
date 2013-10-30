@@ -1,16 +1,13 @@
+require 'fileutils'
 class Cleaner
 
- def initialize path
-   @path = path
- end
+  def initialize path
+    @path = path
+  end
 
- def clean!
-   entries = Dir.entries(@path)
-   entries.each do |entry|
-     if entry.match /\.dmg/
-       File.delete(@path + entry)
-     end
-   end
- end
-
+  def clean!
+    FileUtils.cd(@path) do
+      FileUtils.rm Dir.glob('*.dmg')
+    end
+  end
 end
