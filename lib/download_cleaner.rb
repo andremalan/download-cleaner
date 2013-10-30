@@ -1,0 +1,3 @@
+class DownloadCleander
+
+end
