@@ -1,3 +1,5 @@
-class DownloadCleander
+#! /usr/bin/env ruby
+require_relative 'cleaner'
 
-end
+cleaner = Cleaner.new("/Users/ramcio/Downloads/")
+cleaner.clean!

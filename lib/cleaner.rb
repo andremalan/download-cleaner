@@ -1,8 +1,13 @@
 require 'fileutils'
 class Cleaner
+  attr_reader :path
 
   def initialize path
     @path = path
+  end
+
+  def test
+    puts "some test output to make sure the script is working"
   end
 
   def clean!
