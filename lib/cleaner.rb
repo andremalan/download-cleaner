@@ -13,6 +13,7 @@ class Cleaner
   def clean!
     FileUtils.cd(@path) do
       FileUtils.rm Dir.glob('*.dmg')
+      FileUtils.rm Dir.glob('*.zip')
     end
   end
 end

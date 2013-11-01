@@ -10,6 +10,7 @@ describe Cleaner do
   before(:each) do
       FileUtils.touch(path + "testapp.dmg")
       FileUtils.touch(path + "testapp.not_dmg")
+      FileUtils.touch(path + "testapp.zip")
   end
 
   after(:each) do
@@ -22,14 +23,20 @@ describe Cleaner do
   end
   describe "clean!" do
     it "removes all the dmg files in the downloads directory" do
-
       subject.clean!
       entries = Dir.entries(path)
       entries.should_not include('testapp.dmg')
+    end
+
+    it "removes all the zip files in the downloads directory" do
+      subject.clean!
+      entries = Dir.entries(path)
+      entries.should_not include('testapp.zip')
 
 
     end
     it "does not remove other files in the downloads directory" do
+      subject.clean!
       entries = Dir.entries(path)
       entries.should include('testapp.not_dmg')
 
